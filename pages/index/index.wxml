@@ -1,12 +1,22 @@
 <view class='container'>
   <view class='header'>
     <view class="header-left">
-      <image aspectFit src="{{userInfo.avatarUrl}}"></image>
-      <text>{{userInfo.nickName}}</text>
+      <view wx:if='{{hasUserInfo}}'>
+        <image aspectFit src="{{userInfo.avatarUrl}}"></image>
+        <text>{{userInfo.nickName}}</text>
+      </view>
+      <view wx:else>
+        <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+      </view>
     </view>
     <view class='header-right'>
-      <image aspectFit src="{{loverInfo.avatarUrl}}"></image>
+      <view wx:if='{{hasUserInfo}}'>
+        <image aspectFit src="{{loverInfo.avatarUrl}}"></image>
       <text>{{loverInfo.nickName}}</text>
+      </view>
+      <view wx:else>
+        <button bindtap="bindgetobject">找个对象咧</button>
+      </view>
     </view>
   </view>
 </view>

@@ -8,6 +8,7 @@ Page({
     userInfo: {},//个人信息
     loverInfo: {},//对象信息
     hasUserInfo: false,
+    hasObject: false,//有没有对象
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -32,4 +33,18 @@ Page({
       hasUserInfo: true
     })
   },
+  bindgetobject:function(e){
+    if (this.state.hasObject){
+      return;
+    }else{
+      //获取对象信息
+      wx.request({
+        url: '',
+        data: {
+          user: this.state.userInfo,
+          y: ''
+        },
+      })
+    }
+  }
 })
